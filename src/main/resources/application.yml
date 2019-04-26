@@ -8,10 +8,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://10.0.1.65:8081/eureka/
+  instance:
+    status-page-url-path: /health
+    prefer-ip-address: true
 
 turbine:
   aggregator:
     clusterConfig: default    # 指定聚合哪些集群，多个使用","分割，默认为default。
-  appConfig: ribbon-center,feign-center    # 指定要监控的服务名
-  clusterNameExpression: "'default'"
-
+  appConfig: ribbon-center,feign-center   # 指定要监控的服务名
+  clusterNameExpression: new String("default")
